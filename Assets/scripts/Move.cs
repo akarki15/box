@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move : MonoBehaviour {
+public class move : MonoBehaviour {
 
 	public float speed = 2.0f;
 
@@ -9,4 +9,5 @@ public class Move : MonoBehaviour {
 		var move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 		transform.position += move * speed * Time.deltaTime;
 	}
+		
 }
