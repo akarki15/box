@@ -25,6 +25,10 @@ public class gameplay : MonoBehaviour {
 		}
 	}
 
+	void OnGUI () {
+		GUILayout.Label(score.ToString());
+	}
+
 	void OnCollisionEnter (Collision col)
 	{		
 		if (col.gameObject.name == "box") {
@@ -33,4 +37,5 @@ public class gameplay : MonoBehaviour {
 			} 
 		}
 	}
+		
 }
