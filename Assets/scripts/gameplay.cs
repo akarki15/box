@@ -4,30 +4,33 @@ using System.Collections.Generic;
 
 // attach to floor
 public class gameplay : MonoBehaviour {
-	bool startGame;
+
 	public GameObject box;
+	public GameObject triangle;
+
+	public float score;
+	public float startTime;
+
 	void Start () {
-		startGame = false;
+		
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-
-	}
-
-	void OnCollisionEnter (Collision col) {
-		Debug.Log ("AASHISH");
-		if (col.gameObject.name == "box") {
-			if (!startGame) {
-				startGame = true;
-			} else {
-				Debug.Log ("DAMN");
-				box.GetComponent<Move> ().gameOver = true;
-			}
-		}
-
-	}
-	void OnCollisionExit (Collision col) {
+		if (!box.GetComponent<Move> ().gameOver && triangle.GetComponent<triangle>().startGame)
+			score += (Time.time- startTime);
 		
+		if (box.GetComponent<Move> ().gameOver) {
+			Debug.Log (score);
+		}
+	}
+
+	void OnCollisionEnter (Collision col)
+	{		
+		if (col.gameObject.name == "box") {
+			if (triangle.GetComponent<triangle> ().startGame) {
+				box.GetComponent<Move> ().gameOver = true;
+			} 
+		}
 	}
 }
